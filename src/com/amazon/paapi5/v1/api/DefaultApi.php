@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2024 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +14,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+
 namespace Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\api;
 
 use GuzzleHttp\ClientInterface;
@@ -24,8 +26,7 @@ use Amazon\ProductAdvertisingAPI\v1\ApiException;
 use Amazon\ProductAdvertisingAPI\v1\Configuration;
 use Amazon\ProductAdvertisingAPI\v1\HeaderSelector;
 use Amazon\ProductAdvertisingAPI\v1\ObjectSerializer;
-use Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\SignHelper;
-use http\Exception;
+use Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\auth\SignHelper;
 
 /**
  * DefaultApi Class Doc Comment
@@ -45,6 +46,11 @@ class DefaultApi
      * @var Configuration
      */
     protected $config;
+
+    /**
+     * @var HeaderSelector
+     */
+    protected $headerSelector;
 
     /**
      * @param ClientInterface $client
@@ -141,7 +147,6 @@ class DefaultApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             $responseBody = json_decode($e->getResponseBody());
             switch ($e->getCode()) {
@@ -201,7 +206,7 @@ class DefaultApi
     /**
      * Operation getBrowseNodesAsync
      *
-     * 
+     *
      *
      * @param  \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\GetBrowseNodesRequest $getBrowseNodesRequest GetBrowseNodesRequest (required)
      *
@@ -221,7 +226,7 @@ class DefaultApi
     /**
      * Operation getBrowseNodesAsyncWithHttpInfo
      *
-     * 
+     *
      *
      * @param  \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\GetBrowseNodesRequest $getBrowseNodesRequest GetBrowseNodesRequest (required)
      *
@@ -296,7 +301,7 @@ class DefaultApi
     protected function getBrowseNodesRequest($getBrowseNodesRequest)
     {
         // verify the required parameter 'getBrowseNodesRequest' is set
-        if ($getBrowseNodesRequest === null) {
+        if ($getBrowseNodesRequest === null || (is_array($getBrowseNodesRequest) && count($getBrowseNodesRequest) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $getBrowseNodesRequest when calling getBrowseNodes'
             );
@@ -348,10 +353,8 @@ class DefaultApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
@@ -453,7 +456,6 @@ class DefaultApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             $responseBody = json_decode($e->getResponseBody());
             switch ($e->getCode()) {
@@ -484,7 +486,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $responseBody,
-                        'Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\ProductAdvertisingAPIClientException',
+                        '\Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\ProductAdvertisingAPIClientException',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -513,7 +515,7 @@ class DefaultApi
     /**
      * Operation getItemsAsync
      *
-     * 
+     *
      *
      * @param  \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\GetItemsRequest $getItemsRequest GetItemsRequest (required)
      *
@@ -533,7 +535,7 @@ class DefaultApi
     /**
      * Operation getItemsAsyncWithHttpInfo
      *
-     * 
+     *
      *
      * @param  \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\GetItemsRequest $getItemsRequest GetItemsRequest (required)
      *
@@ -608,7 +610,7 @@ class DefaultApi
     protected function getItemsRequest($getItemsRequest)
     {
         // verify the required parameter 'getItemsRequest' is set
-        if ($getItemsRequest === null) {
+        if ($getItemsRequest === null || (is_array($getItemsRequest) && count($getItemsRequest) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $getItemsRequest when calling getItems'
             );
@@ -660,10 +662,8 @@ class DefaultApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
@@ -765,7 +765,6 @@ class DefaultApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             $responseBody = json_decode($e->getResponseBody());
             switch ($e->getCode()) {
@@ -825,7 +824,7 @@ class DefaultApi
     /**
      * Operation getVariationsAsync
      *
-     * 
+     *
      *
      * @param  \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\GetVariationsRequest $getVariationsRequest GetVariationsRequest (required)
      *
@@ -845,7 +844,7 @@ class DefaultApi
     /**
      * Operation getVariationsAsyncWithHttpInfo
      *
-     * 
+     *
      *
      * @param  \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\GetVariationsRequest $getVariationsRequest GetVariationsRequest (required)
      *
@@ -920,7 +919,7 @@ class DefaultApi
     protected function getVariationsRequest($getVariationsRequest)
     {
         // verify the required parameter 'getVariationsRequest' is set
-        if ($getVariationsRequest === null) {
+        if ($getVariationsRequest === null || (is_array($getVariationsRequest) && count($getVariationsRequest) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $getVariationsRequest when calling getVariations'
             );
@@ -972,10 +971,8 @@ class DefaultApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
@@ -1077,7 +1074,6 @@ class DefaultApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             $responseBody = json_decode($e->getResponseBody());
             switch ($e->getCode()) {
@@ -1137,7 +1133,7 @@ class DefaultApi
     /**
      * Operation searchItemsAsync
      *
-     * 
+     *
      *
      * @param  \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\SearchItemsRequest $searchItemsRequest SearchItemsRequest (required)
      *
@@ -1157,7 +1153,7 @@ class DefaultApi
     /**
      * Operation searchItemsAsyncWithHttpInfo
      *
-     * 
+     *
      *
      * @param  \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\SearchItemsRequest $searchItemsRequest SearchItemsRequest (required)
      *
@@ -1232,7 +1228,7 @@ class DefaultApi
     protected function searchItemsRequest($searchItemsRequest)
     {
         // verify the required parameter 'searchItemsRequest' is set
-        if ($searchItemsRequest === null) {
+        if ($searchItemsRequest === null || (is_array($searchItemsRequest) && count($searchItemsRequest) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $searchItemsRequest when calling searchItems'
             );
@@ -1284,10 +1280,8 @@ class DefaultApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2024 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +14,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+
 namespace Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1;
 
 use \ArrayAccess;
@@ -46,6 +48,8 @@ class OfferPrice implements ModelInterface, ArrayAccess
         'currency' => 'string',
         'displayAmount' => 'string',
         'pricePerUnit' => 'float',
+        'priceType' => '\Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\PriceType',
+        'priceTypeLabel' => 'string',
         'savings' => '\Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\OfferSavings'
     ];
 
@@ -59,6 +63,8 @@ class OfferPrice implements ModelInterface, ArrayAccess
         'currency' => null,
         'displayAmount' => null,
         'pricePerUnit' => null,
+        'priceType' => null,
+        'priceTypeLabel' => null,
         'savings' => null
     ];
 
@@ -93,6 +99,8 @@ class OfferPrice implements ModelInterface, ArrayAccess
         'currency' => 'Currency',
         'displayAmount' => 'DisplayAmount',
         'pricePerUnit' => 'PricePerUnit',
+        'priceType' => 'PriceType',
+        'priceTypeLabel' => 'PriceTypeLabel',
         'savings' => 'Savings'
     ];
 
@@ -106,6 +114,8 @@ class OfferPrice implements ModelInterface, ArrayAccess
         'currency' => 'setCurrency',
         'displayAmount' => 'setDisplayAmount',
         'pricePerUnit' => 'setPricePerUnit',
+        'priceType' => 'setPriceType',
+        'priceTypeLabel' => 'setPriceTypeLabel',
         'savings' => 'setSavings'
     ];
 
@@ -119,6 +129,8 @@ class OfferPrice implements ModelInterface, ArrayAccess
         'currency' => 'getCurrency',
         'displayAmount' => 'getDisplayAmount',
         'pricePerUnit' => 'getPricePerUnit',
+        'priceType' => 'getPriceType',
+        'priceTypeLabel' => 'getPriceTypeLabel',
         'savings' => 'getSavings'
     ];
 
@@ -186,6 +198,8 @@ class OfferPrice implements ModelInterface, ArrayAccess
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
         $this->container['displayAmount'] = isset($data['displayAmount']) ? $data['displayAmount'] : null;
         $this->container['pricePerUnit'] = isset($data['pricePerUnit']) ? $data['pricePerUnit'] : null;
+        $this->container['priceType'] = isset($data['priceType']) ? $data['priceType'] : null;
+        $this->container['priceTypeLabel'] = isset($data['priceTypeLabel']) ? $data['priceTypeLabel'] : null;
         $this->container['savings'] = isset($data['savings']) ? $data['savings'] : null;
     }
 
@@ -209,8 +223,7 @@ class OfferPrice implements ModelInterface, ArrayAccess
      */
     public function valid()
     {
-
-        return true;
+        return count($this->listInvalidProperties()) === 0;
     }
 
 
@@ -306,6 +319,54 @@ class OfferPrice implements ModelInterface, ArrayAccess
     public function setPricePerUnit($pricePerUnit)
     {
         $this->container['pricePerUnit'] = $pricePerUnit;
+
+        return $this;
+    }
+
+    /**
+     * Gets priceType
+     *
+     * @return \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\PriceType
+     */
+    public function getPriceType()
+    {
+        return $this->container['priceType'];
+    }
+
+    /**
+     * Sets priceType
+     *
+     * @param \Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1\PriceType $priceType priceType
+     *
+     * @return $this
+     */
+    public function setPriceType($priceType)
+    {
+        $this->container['priceType'] = $priceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets priceTypeLabel
+     *
+     * @return string
+     */
+    public function getPriceTypeLabel()
+    {
+        return $this->container['priceTypeLabel'];
+    }
+
+    /**
+     * Sets priceTypeLabel
+     *
+     * @param string $priceTypeLabel priceTypeLabel
+     *
+     * @return $this
+     */
+    public function setPriceTypeLabel($priceTypeLabel)
+    {
+        $this->container['priceTypeLabel'] = $priceTypeLabel;
 
         return $this;
     }

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2024 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +14,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+
 namespace Amazon\ProductAdvertisingAPI\v1\com\amazon\paapi5\v1;
 use \Amazon\ProductAdvertisingAPI\v1\ObjectSerializer;
 
@@ -32,6 +34,8 @@ class GetItemsResource
     const BROWSE_NODE_INFOBROWSE_NODESANCESTOR = 'BrowseNodeInfo.BrowseNodes.Ancestor';
     const BROWSE_NODE_INFOBROWSE_NODESSALES_RANK = 'BrowseNodeInfo.BrowseNodes.SalesRank';
     const BROWSE_NODE_INFOWEBSITE_SALES_RANK = 'BrowseNodeInfo.WebsiteSalesRank';
+    const CUSTOMER_REVIEWSCOUNT = 'CustomerReviews.Count';
+    const CUSTOMER_REVIEWSSTAR_RATING = 'CustomerReviews.StarRating';
     const IMAGESPRIMARYSMALL = 'Images.Primary.Small';
     const IMAGESPRIMARYMEDIUM = 'Images.Primary.Medium';
     const IMAGESPRIMARYLARGE = 'Images.Primary.Large';
@@ -54,6 +58,7 @@ class GetItemsResource
     const OFFERSLISTINGSAVAILABILITYMIN_ORDER_QUANTITY = 'Offers.Listings.Availability.MinOrderQuantity';
     const OFFERSLISTINGSAVAILABILITYTYPE = 'Offers.Listings.Availability.Type';
     const OFFERSLISTINGSCONDITION = 'Offers.Listings.Condition';
+    const OFFERSLISTINGSCONDITIONCONDITION_NOTE = 'Offers.Listings.Condition.ConditionNote';
     const OFFERSLISTINGSCONDITIONSUB_CONDITION = 'Offers.Listings.Condition.SubCondition';
     const OFFERSLISTINGSDELIVERY_INFOIS_AMAZON_FULFILLED = 'Offers.Listings.DeliveryInfo.IsAmazonFulfilled';
     const OFFERSLISTINGSDELIVERY_INFOIS_FREE_SHIPPING_ELIGIBLE = 'Offers.Listings.DeliveryInfo.IsFreeShippingEligible';
@@ -77,12 +82,21 @@ class GetItemsResource
     const RENTAL_OFFERSLISTINGSAVAILABILITYTYPE = 'RentalOffers.Listings.Availability.Type';
     const RENTAL_OFFERSLISTINGSBASE_PRICE = 'RentalOffers.Listings.BasePrice';
     const RENTAL_OFFERSLISTINGSCONDITION = 'RentalOffers.Listings.Condition';
+    const RENTAL_OFFERSLISTINGSCONDITIONCONDITION_NOTE = 'RentalOffers.Listings.Condition.ConditionNote';
     const RENTAL_OFFERSLISTINGSCONDITIONSUB_CONDITION = 'RentalOffers.Listings.Condition.SubCondition';
     const RENTAL_OFFERSLISTINGSDELIVERY_INFOIS_AMAZON_FULFILLED = 'RentalOffers.Listings.DeliveryInfo.IsAmazonFulfilled';
     const RENTAL_OFFERSLISTINGSDELIVERY_INFOIS_FREE_SHIPPING_ELIGIBLE = 'RentalOffers.Listings.DeliveryInfo.IsFreeShippingEligible';
     const RENTAL_OFFERSLISTINGSDELIVERY_INFOIS_PRIME_ELIGIBLE = 'RentalOffers.Listings.DeliveryInfo.IsPrimeEligible';
     const RENTAL_OFFERSLISTINGSDELIVERY_INFOSHIPPING_CHARGES = 'RentalOffers.Listings.DeliveryInfo.ShippingCharges';
     const RENTAL_OFFERSLISTINGSMERCHANT_INFO = 'RentalOffers.Listings.MerchantInfo';
+    const OFFERS_V2LISTINGSAVAILABILITY = 'OffersV2.Listings.Availability';
+    const OFFERS_V2LISTINGSCONDITION = 'OffersV2.Listings.Condition';
+    const OFFERS_V2LISTINGSDEAL_DETAILS = 'OffersV2.Listings.DealDetails';
+    const OFFERS_V2LISTINGSIS_BUY_BOX_WINNER = 'OffersV2.Listings.IsBuyBoxWinner';
+    const OFFERS_V2LISTINGSLOYALTY_POINTS = 'OffersV2.Listings.LoyaltyPoints';
+    const OFFERS_V2LISTINGSMERCHANT_INFO = 'OffersV2.Listings.MerchantInfo';
+    const OFFERS_V2LISTINGSPRICE = 'OffersV2.Listings.Price';
+    const OFFERS_V2LISTINGSTYPE = 'OffersV2.Listings.Type';
     
     /**
      * Gets allowable values of the enum
@@ -95,6 +109,8 @@ class GetItemsResource
             self::BROWSE_NODE_INFOBROWSE_NODESANCESTOR,
             self::BROWSE_NODE_INFOBROWSE_NODESSALES_RANK,
             self::BROWSE_NODE_INFOWEBSITE_SALES_RANK,
+            self::CUSTOMER_REVIEWSCOUNT,
+            self::CUSTOMER_REVIEWSSTAR_RATING,
             self::IMAGESPRIMARYSMALL,
             self::IMAGESPRIMARYMEDIUM,
             self::IMAGESPRIMARYLARGE,
@@ -117,6 +133,7 @@ class GetItemsResource
             self::OFFERSLISTINGSAVAILABILITYMIN_ORDER_QUANTITY,
             self::OFFERSLISTINGSAVAILABILITYTYPE,
             self::OFFERSLISTINGSCONDITION,
+            self::OFFERSLISTINGSCONDITIONCONDITION_NOTE,
             self::OFFERSLISTINGSCONDITIONSUB_CONDITION,
             self::OFFERSLISTINGSDELIVERY_INFOIS_AMAZON_FULFILLED,
             self::OFFERSLISTINGSDELIVERY_INFOIS_FREE_SHIPPING_ELIGIBLE,
@@ -140,12 +157,21 @@ class GetItemsResource
             self::RENTAL_OFFERSLISTINGSAVAILABILITYTYPE,
             self::RENTAL_OFFERSLISTINGSBASE_PRICE,
             self::RENTAL_OFFERSLISTINGSCONDITION,
+            self::RENTAL_OFFERSLISTINGSCONDITIONCONDITION_NOTE,
             self::RENTAL_OFFERSLISTINGSCONDITIONSUB_CONDITION,
             self::RENTAL_OFFERSLISTINGSDELIVERY_INFOIS_AMAZON_FULFILLED,
             self::RENTAL_OFFERSLISTINGSDELIVERY_INFOIS_FREE_SHIPPING_ELIGIBLE,
             self::RENTAL_OFFERSLISTINGSDELIVERY_INFOIS_PRIME_ELIGIBLE,
             self::RENTAL_OFFERSLISTINGSDELIVERY_INFOSHIPPING_CHARGES,
             self::RENTAL_OFFERSLISTINGSMERCHANT_INFO,
+            self::OFFERS_V2LISTINGSAVAILABILITY,
+            self::OFFERS_V2LISTINGSCONDITION,
+            self::OFFERS_V2LISTINGSDEAL_DETAILS,
+            self::OFFERS_V2LISTINGSIS_BUY_BOX_WINNER,
+            self::OFFERS_V2LISTINGSLOYALTY_POINTS,
+            self::OFFERS_V2LISTINGSMERCHANT_INFO,
+            self::OFFERS_V2LISTINGSPRICE,
+            self::OFFERS_V2LISTINGSTYPE,
         ];
     }
 }
